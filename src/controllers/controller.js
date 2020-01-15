@@ -12,7 +12,7 @@ module.exports = {
                 const apiData = await axios.get(`https://api.github.com/users/${github}`);
                 const { name = login, avatar_url, bio , html_url} = apiData.data;
                 const tecsArray = parseStringAsArray(tecs);
-                const location = {type: 'Point', coordenadas: [longitude, latitude]}
+                const location = {type: 'Point', coordinates: [longitude, latitude]}
                 return res.json(await service.save(name, avatar_url, bio, github, tecsArray, location))
             } else {
                 return res.send('Usuario ja cadastrado');
@@ -35,7 +35,7 @@ module.exports = {
         try {
             const {latitude, longitude, tecs} = req.query;
             const tecsArray = parseStringAsArray(tecs);
-            console.log(tecsArray);
+            console.log(req.query);
             return res.status(200).json(await service.search(latitude, longitude, tecsArray));
         } catch (error) {
             return res.json({error:error.mesage});

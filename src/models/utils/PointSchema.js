@@ -6,9 +6,8 @@ const PointSchema = new Schema({
         enum: ['Point'],
         required: true
     },
-    coordenadas: {
+    coordinates: {
         type: [Number],
-        index: '2dsphere',
         required: true
     }
 })

@@ -24,7 +24,7 @@ const DevSchema = new Schema({
      },
      location: {
         type: PointSchema,
-        required: true
+        index: '2dsphere'
      },
 
 });
